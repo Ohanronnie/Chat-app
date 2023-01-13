@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import * as Yup from 'yup';
 import './output.css';
 import axios from 'axios';
+document.body.style.backgroundColor="#FFFFFF"
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
