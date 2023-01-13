@@ -1,0 +1,60 @@
+import {useState,useEffect} from 'react';
+function Register(){
+	const [values,setValues] = useState({});
+	function setData(e){
+		const name = e.target.name;
+		const value = e.target.value;
+		setValues(data => ({...data, [name]:value}));
+	}
+	function handleSubmit(e){
+		e.preventDefault();
+		try{
+//		let form = new FormData(values);
+		
+		fetch('/signup',{
+			method: "post",
+			body: values
+		})
+                }
+                catch(err){alert(err)}
+	}
+	return (<>
+    <div className="rounded-br-4xl pt-7 pl-5 h-28 shadow-xl">
+        <h3 className="text-3xl text-great-blue-10 capitalize">New account</h3>
+        <p className="text-slate-900">
+            Sign up and get started 
+        </p>
+    </div>
+    <form onSubmit={handleSubmit} className="mt-10 px-9" action="">
+        <label className="mb-5 text-slate-600 text-sm" for="mail">
+            Email
+        </label>
+        <input onChange={setData} id="mail" style={{borderWidth: "1.5px"}} value={values.mail || ""} name="mail" placeholder="Enter your mail" className="w-full mt-1 border-great-blue-1 p-3 text-slate-500 border-2 border-solid drop-shadow-lg focus:outline-none rounded-2xl h-10 mb-5" type="mail"/>
+<div className="flex">
+    <div className="mr-3">
+            <label className="mb-5 text-slate-600 text-sm" for="mail">
+            First name 
+        </label>
+        <input id="mail" onChange={setData} style={{borderWidth: "1.5px"}} value={values.fname || ""} name="fname" placeholder="First name" className="w-full mt-1 border-great-blue-1 p-3 text-slate-500 border-2 border-solid drop-shadow-lg focus:outline-none rounded-2xl h-10 mb-5" type="mail"/>
+        </div>
+        <div>
+        <label className="mb-5 text-slate-600 text-sm" for="mail">
+            Last name 
+        </label>
+        <input id="mail" onChange={setData} style={{borderWidth: "1.5px"}} value={values.lname || ""} name="lname" placeholder="Last name" className="w-full mt-1 border-great-blue-1 p-3 text-slate-500 border-2 border-solid drop-shadow-lg focus:outline-none rounded-2xl h-10 mb-5" type="mail"/>
+        </div>
+</div>
+        <label className="mb-5 text-slate-600 text-sm" for="pass">
+            Password 
+        </label>
+        <input id="pass" onChange={setData} style={{borderWidth: "1.5px"}} value={values.pass || ""} name="pass" placeholder="Enter your password" className="w-full mt-1 border-great-blue-1 p-3 text-slate-500 border-2 mb-1 border-solid drop-shadow-lg focus:outline-none rounded-2xl h-10" type="password"/>
+     <button type="submit" style={{borderWidth: "1.5px"}} className="mt-5 text-white rounded-2xl h-9 w-full bg-gradient-to-r from-great-blue-50 to-great-blue-100 hover:bg-slate-200 hover:from-slate-200 hover:to-slate-200 hover:text-slate-500 hover:border-solid hover:border-2 hover:border-great-blue-100">Sign Up</button>
+
+    </form>
+    <hr className="w-1/2 mx-auto mt-5"/>    
+    <div className="px-10">
+          <button style={{borderWidth: "1.5px"}} className="hover:bg-gradient-to-r hover:from-great-blue-50 hover:border-slate-200 hover:to-great-blue-100 text-great-blue-100 bg-slate-200 hover:text-white rounded-2xl mt-3 h-9 w-full border-solid border-2 border-great-blue-100 mb-13">Sign In</button>
+</div></>
+	)
+}
+export default Register
